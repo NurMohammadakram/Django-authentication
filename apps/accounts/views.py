@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, 'index.html')
 
+@login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
 
@@ -26,8 +28,13 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return HttpResponse('Succesfully loged in!')
+            return redirect('dashboard')
         else:
             return HttpResponse('Invalid credentials!')
     
     return render(request, 'auth/login.html')
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect('user_login')
