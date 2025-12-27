@@ -5,10 +5,28 @@ Home - Ebay mart
 {% endblock title%}
 
 {% block content %}
-<section>
-    <div class="container">
-        <h1>Ebay mart, Your choice of destination</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate, deleniti.</p>
+<section class="hero-section d-flex align-items-center">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="display-3 fw-bold mb-4 text-white">
+                    Ebay Mart, Your Choice of <span class="text-warning">Destination</span>
+                </h1>
+                <p class="lead mb-5 text-white-50">
+                    Discover exclusive deals on the latest trends. From electronics to fashion, 
+                    we bring the world's market right to your doorstep.
+                </p>
+                
+                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'dashboard' %}" class="btn btn-warning btn-lg px-5 py-3 fw-bold shadow">Go to Dashboard</a>
+                    {% else %}
+                        <a href="{% url 'user_login' %}" class="btn btn-warning btn-lg px-5 py-3 fw-bold shadow">Start Shopping</a>
+                        <a href="{% url 'user_register' %}" class="btn btn-outline-light btn-lg px-5 py-3">Create Account</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock content %}

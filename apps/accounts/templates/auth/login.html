@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Login form
+Login - User Authentication
 {% endblock title %}
 
 {% block content %}
@@ -10,7 +10,7 @@ Login form
         <div class="col-md-6 col-lg-4">
             <div class="card shadow-sm">
                 <div class="card-body p-4">
-                    <h3 class="text-center mb-4">Log In</h3>
+                    <h3 class="text-center mb-4">Sign In</h3>
                     
                     <form method="POST">
                         {% csrf_token %}
@@ -26,7 +26,7 @@ Login form
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">Log In</button>
+                            <button type="submit" class="btn btn-primary">Sign In</button>
                         </div>
                     </form>
                     
